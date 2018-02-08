@@ -1,0 +1,18 @@
+[submodule "bccgp"]
+	path = bccgp
+	url = https://github.com/hyraxZK/bccgp
+[submodule "fennel"]
+	path = fennel
+	url = https://github.com/hyraxZK/fennel
+[submodule "libpws"]
+	path = libpws
+	url = https://github.com/hyraxZK/libpws
+[submodule "pws"]
+	path = pws
+	url = https://github.com/hyraxZK/pws
+[submodule "pylaurent"]
+	path = pylaurent
+	url = https://github.com/hyraxZK/pylaurent
+[submodule "pymiracl"]
+	path = pymiracl
+	url = https://github.com/hyraxZK/pymiracl
