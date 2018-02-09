@@ -24,6 +24,10 @@ On Debian-ish systems, you can run the following:
     apt-get install build-essential g++ gcc automake pkg-config libtool \
                     libtool-bin python python-cffi pypy libssl-dev libgmp-dev
 
+On Arch, the approximate equivalent is
+
+    pacman -S base-devel python2 python2-cffi pypy openssl gmp
+
 In other words, you'll need a C++11-compatible compiler (g++ 5, 6, or 7 will work).
 
 If you are also planning to build BCCGP, you will need to have NTL 10.x available.
@@ -33,7 +37,6 @@ Please see the [pylaurent](https://github.com/hyraxZK/pylaurent) README for more
 
 The top-level Makefile in this directory will build everything below. Just run
 
-    git submodule update --init
     make -j4        # for example
 
 If you want to build BCCGP, you may need a bit more. First, you will need to set

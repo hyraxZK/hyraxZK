@@ -4,6 +4,23 @@
 #
 # build hyraxZK
 
+NTLDIR ?= "yes"
+BCCGP ?= 0
+export NTLDIR BCCGP
+.PHONY: default all submodules clean distclean
+default: submodules
+	@+$(MAKE) all
+
+# make a target depend on the value of a variable
+# this solution is from https://stackoverflow.com/questions/26145267/
+define REMEMBER_VAR
+.PHONY: phony
+$1: phony
+	@if [ "`cat $1 2>&1`"x != "$($1)"x ]; then echo -n $($1) > $1; fi
+endef
+$(eval $(call REMEMBER_VAR,NTLDIR))
+$(eval $(call REMEMBER_VAR,BCCGP))
+
 ifeq ($(BCCGP),1)
 all: libpws/config.log pylaurent/config.log pymiracl/config.log BCCGP
 	@+$(MAKE) -C pylaurent
@@ -13,19 +30,8 @@ endif
 	@+$(MAKE) -C libpws
 	@+$(MAKE) -C pymiracl
 
-# make a target depend on the value of a variable
-# this solution is from https://stackoverflow.com/questions/26145267/
-define REMEMBER_VAR
-.PHONY: phony
-$1: phony
-	@if [ "`cat $1 2>&1`"x != "$($1)"x ]; then echo -n $($1) > $1; fi
-endef
-
-.PHONY: all clean
-NTLDIR ?= "yes"
-BCCGP ?= 0
-$(eval $(call REMEMBER_VAR,NTLDIR))
-$(eval $(call REMEMBER_VAR,BCCGP))
+submodules:
+	@git submodule update --init --recursive
 
 %/configure: %/configure.ac
 	cd $* && ./autogen.sh
@@ -43,3 +49,6 @@ clean:
 	@+-$(MAKE) -C pylaurent distclean
 	@+-$(MAKE) -C pymiracl distclean
 	@rm -f NTLDIR BCCGP
+
+distclean: clean
+	@git submodule foreach git clean -xffd .
