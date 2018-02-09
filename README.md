@@ -1,21 +1,27 @@
-# hyrax meta-repository #
+# Hyrax meta-repository #
 
-This meta-repo will help you build all of the dependencies for the Hyrax reference
-implementation, and optionally for the BCCGP-sqrt and Bulletproofs implementations.
+[Hyrax](https://eprint.iacr.org/2017/1132) is a doubly-efficient (meaning,
+for both the prover and the verifier) zkSNARK.
 
-Please see the respective README files in each of the following repositories:
+This meta-repository will help you build all of the dependencies for the Hyrax reference
+implementation, and optionally for our
+[BCCGP-sqrt](https://eprint.iacr.org/2016/263) and
+[Bulletproofs](https://eprint.iacr.org/2017/1066)
+implementations.
 
-- [fennel](https://github.com/hyraxZK/fennel)
+Please read the README files in each of the following repositories:
 
-- [bccgp](https://github.com/hyraxZK/bccgp)
+- [fennel](https://github.com/hyraxZK/fennel): the main Hyrax codebase
 
-- [pws](https://github.com/hyraxZK/pws)
+- [bccgp](https://github.com/hyraxZK/bccgp): the BCCGP-sqrt and Bulletproofs implementations
 
-- [libpws](https://github.com/hyraxZK/libpws)
+- [pws](https://github.com/hyraxZK/pws): scripts for generating prover worksheet (PWS) files and example runscripts for both fennel and bccgp.
 
-- [pymiracl](https://github.com/hyraxZK/pymiracl)
+- [libpws](https://github.com/hyraxZK/libpws): a library for parsing PWS files, used by fennel
 
-- [pylaurent](https://github.com/hyraxZK/pylaurent)
+- [pymiracl](https://github.com/hyraxZK/pymiracl): a Python CFFI interface to the [MIRACL Crypto SDK](https://github.com/miracl/MIRACL), plus fast multi-exponentiation routines.
+
+- [pylaurent](https://github.com/hyraxZK/pylaurent): a Python CFFI interface to [NTL](http://www.shoup.net/ntl), used by BCCGP-sqrt.
 
 ## prerequisites ##
 
